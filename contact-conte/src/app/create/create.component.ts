@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Contact } from '../models/contact.models';
 import { AppState } from '../app.state';
 import * as ContactActions from '../actions/contact.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
   FormBuilder,
@@ -36,6 +37,7 @@ export class CreateComponent implements OnInit {
     private store: Store<AppState>,
     private fb: FormBuilder,
     private modal: MatDialog,
+    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
@@ -44,6 +46,9 @@ export class CreateComponent implements OnInit {
       new ContactActions.AddContact(this.form.value as Contact)
     );
     this.cloeModal();
+    this._snackBar.open('Contact Added', 'Done', {
+      duration: 2000,
+    });
   }
   updateContact() {
     this.store.dispatch(
@@ -53,6 +58,9 @@ export class CreateComponent implements OnInit {
       )
     );
     this.cloeModal();
+    this._snackBar.open('Contact Updated', 'Done', {
+      duration: 2000,
+    });
   }
 
   cloeModal(): void {

@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [AppComponent, CreateComponent, ReadComponent],
   imports: [
@@ -25,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
     StoreModule.forRoot({ contact: reducer }, {}),
     BrowserAnimationsModule,
     AppRoutingModule,
