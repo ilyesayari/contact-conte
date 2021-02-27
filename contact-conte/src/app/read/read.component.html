@@ -1,0 +1,30 @@
+<button class="Create" mat-raised-button (click)="openModal()">Create</button>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col" style="min-width: 200px">Email</th>
+      <th scope="col"><img src="assets/gear-wide-connected.svg" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of dataSource | async; let i = index">
+      <th scope="row">{{ item.name }}</th>
+      <td>{{ item.surName }}</td>
+      <td>{{ item.email }}</td>
+      <td>
+        <img
+          style="cursor: pointer"
+          src="assets/trash.svg"
+          (click)="deleteItem(i)"
+        />
+        <img
+          src="assets/pencil-square.svg"
+          style="cursor: pointer"
+          (click)="updateItem(item, i)"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

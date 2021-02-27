@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Create New Contact</h1>
+<form [formGroup]="form">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Name:</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="name" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>SurName:</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="surName" />
+    </mat-form-field>
+  </p>
+  <mat-form-field appearance="fill">
+    <mat-label>Email:</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      required
+      formControlName="email"
+    />
+    <mat-error *ngIf="form.get('email').invalid">{{
+      getErrorMessage()
+    }}</mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="cloeModal()">No Thanks</button>
+    <button
+      *ngIf="!edit"
+      [disabled]="!form.valid"
+      type="submit"
+      mat-button
+      cdkFocusInitial
+      (click)="addContact()"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="edit"
+      [disabled]="!form.valid"
+      type="submit"
+      mat-button
+      cdkFocusInitial
+      (click)="updateContact()"
+    >
+      Update
+    </button>
+  </div>
+</form>
